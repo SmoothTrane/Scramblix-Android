@@ -20,7 +20,7 @@ public class sketchUp extends View  {
     int firstCharacterY;
 int x = (int) getRandomX();
     int[] xArray= getXArray();
-List <Integer> disList = new ArrayList<Integer>();
+LinkedList <Integer> disList = new LinkedList<Integer>();
     int y=0;
     double lastCharacterY=0;
     String check;
@@ -59,10 +59,10 @@ String [] arr = {"Dedic","love","happiness"};
                 for (int j = 0; j < arr[i].length(); j++) {
                     char result = arr[i].charAt(j);
                     check = String.valueOf(result);
-                    ListOf();
 
-                    canvas.drawText(check, disList.get(i), y + 40 * j, txt);
 
+             canvas.drawText(check,disList.get(i), y + 40 * j, txt);
+// ;
 //        }
 
                     // }
@@ -70,7 +70,6 @@ String [] arr = {"Dedic","love","happiness"};
                 }
 
                 if (y < canvas.getHeight() / 2) {
-
                     lastCharacterY += arr[i].length() / 1.6;
 
 
@@ -112,10 +111,12 @@ public int[] getXArray(){
    }
 return bArray;
 }
-public void ListOf () {
+public Integer[] ListOf () {
+    disList.addFirst((int) getRandomX());
+return disList.toArray();
 
+//disList.
 
-        disList.add((int) getRandomX());
 
 }
 }
