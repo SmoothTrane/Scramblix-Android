@@ -9,8 +9,9 @@ import android.graphics.Rect;
 import android.graphics.Paint;
 import android.widget.Toast;
 import android.util.Log;
+import java.util.*;
 import android.view.SurfaceView;
-;import static java.lang.Thread.State;
+import static java.lang.Thread.State;
 
 /**
  * Created by garycoltrane on 8/11/15.
@@ -19,7 +20,7 @@ public class sketchUp extends View  {
     int firstCharacterY;
 int x = (int) getRandomX();
     int[] xArray= getXArray();
-
+List <Integer> disList = new ArrayList<Integer>();
     int y=0;
     double lastCharacterY=0;
     String check;
@@ -55,21 +56,16 @@ String [] arr = {"Dedic","love","happiness"};
 
                 }
 
-
-//      if(lastCharacterY>canvas.getHeight()/2){
-//          y=0;
-//      }
-
                 for (int j = 0; j < arr[i].length(); j++) {
                     char result = arr[i].charAt(j);
                     check = String.valueOf(result);
+                    ListOf();
 
-                    canvas.drawText(check, xArray[i], y + 40 * j, txt);
+                    canvas.drawText(check, disList.get(i), y + 40 * j, txt);
 
 //        }
 
                     // }
-
 
                 }
 
@@ -80,9 +76,10 @@ String [] arr = {"Dedic","love","happiness"};
 
                 }
                 if (lastCharacterY > canvas.getHeight() / 2) {
+                    ListOf();
                     y = 0;
                     lastCharacterY = arr[i].length() / 1.6;
-                    x = (int) getRandomX();
+
                 }
 
 //     Log.d("Activity",Integer.toString(y));
@@ -93,27 +90,34 @@ String [] arr = {"Dedic","love","happiness"};
             }
         }
 
-
-
     public  double getRandomX(){
 
-        double X = (Math.random()*super.getWidth() -0) +0;
-return X;
+        int X =(int) Math.floor((Math.random() * (super.getWidth() - 0+1)) +0);
+
+
+        return X;
     }
+public int getNum(){
 
+    return 500;
+}
 public int[] getXArray(){
-    xArray= new int[3];
-   for(int i=0; i<xArray.length; i++){
+   int [] bArray= new int[3];
+   for(int i=0; i<bArray.length; i++){
 
-       xArray[i] = x;
-      // Log.v("Activity", Integer.toString(super.getWidth()));
+       bArray[i] = (int) getRandomX();
+
 
 
    }
-return xArray;
+return bArray;
 }
+public void ListOf () {
 
 
+        disList.add((int) getRandomX());
+
+}
 }
 
 
